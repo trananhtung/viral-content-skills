@@ -76,6 +76,29 @@ Evaluate this LinkedIn post — audience is CTOs, goal is awareness:
 This email got a 2% open rate. Diagnose it and rewrite the subject line.
 ```
 
+## Examples
+
+Real output from both skills, generated for a live store ([lunavows.com](https://lunavows.com)):
+
+- [`examples/instagram-caption-ring-dish.md`](examples/instagram-caption-ring-dish.md) — Instagram caption, goal: shares
+- [`examples/meta-ad-embroidered-sweatshirt.md`](examples/meta-ad-embroidered-sweatshirt.md) — Meta ad, goal: conversion
+- [`examples/email-gothic-tapestry.md`](examples/email-gothic-tapestry.md) — marketing email, goal: conversion
+- [`examples/evaluation-report-sample.md`](examples/evaluation-report-sample.md) — a full scorecard from the evaluator
+
+### Benchmark
+
+Three briefs were written twice — once by an agent following `viral-content-creator`, once by an agent given the identical brief and no skill — then all six were scored blind by independent evaluator agents that did not know which was which. A deliberately generic "corporate announcement" post was slipped into the same blind set as a calibration control.
+
+| Brief | With skill | Baseline | Delta |
+|---|---|---|---|
+| Instagram caption (shares) | 3.8 | 3.4 | +0.4 |
+| Meta ad (conversion) | 3.6 | 3.1 | +0.5 |
+| Marketing email (conversion) | 3.8 | 3.0 | +0.8 |
+| **Mean** | **3.73** | **3.17** | **+0.57** |
+| Generic control post | — | 0.9 | — |
+
+Largest per-dimension gains: Simple, Unexpected, Emotion (arousal), and Story vehicle, all +1.0. The control scoring 0.9 against real copy at 3.0–3.8 is the evidence that the rubric discriminates rather than flattering everything it reads.
+
 ## Attribution & license
 
 The STEPPS and SUCCESs frameworks are the intellectual work of **Jonah Berger** and **Chip & Dan Heath** respectively. This repository is an independent, educational distillation of those ideas into AI-usable instructions — it reproduces no book text and is not affiliated with or endorsed by the authors. If these skills are useful to you, buy the books; they're worth it.

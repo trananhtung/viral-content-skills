@@ -124,9 +124,25 @@ Compute the weighted average with these multipliers (dimension score × weight, 
 4. Weighted average ≥ 2.5 → 🟡 Revise.
 5. Otherwise → 🔴 Rework.
 
+## When a dimension is N/A
+
+Scoring a dimension the format structurally cannot carry punishes the writer for the brief, not the work — and it silently drags the weighted average below the Publish line no matter how good the copy is. Mark it N/A (excluded from the average) when the format has no room to express it, and say so in the evidence cell.
+
+Common, legitimate N/A calls:
+
+| Format | Usually N/A | Why |
+|---|---|---|
+| Single ad, IG caption, subject line | Public | One post can't design observability or behavioral residue; that's a campaign-level or product-level decision. |
+| Short-form commerce copy for a decorative/keepsake product | Practical Value | The product's value is emotional, not informational — there is no useful tip to forward. |
+| Any piece under ~60 words, headline, or hook alone | Story, Story vehicle, Triggers | Not enough room for narrative or a cue to be planted. |
+| 1:1 email, internal memo, transactional message | Public, Social Currency | Not shared onward by design. |
+
+The discipline that keeps this honest: ask whether a *better version of this same brief* could have scored on the dimension. If yes, score it low. If no, mark N/A. "An Instagram caption can't build Public visibility" is a fair N/A; "this caption didn't bother being remarkable" is a 1, not an N/A.
+
 ## Calibration notes
 
 - A typical competent-but-forgettable corporate post scores 2.0–2.8 weighted. That is normal — say so plainly.
+- Short-form commerce copy that scores 3.5–3.9 is genuinely good work with one real gap left. Don't round it up to Publish to be nice, and don't describe it as weak — name the one gap and say the rest is strong.
 - Scores of 5 should be rare and quotable: if you give a 5, the evidence cell should contain a line worth stealing.
 - Long content (articles, scripts) is scored on its weakest load-bearing part: a great body with a dead headline fails at Unexpected, because nobody reaches the body.
 - When evaluating a headline/hook alone, score Triggers, Public, and Story vehicle as N/A unless present, and say the evaluation is partial.

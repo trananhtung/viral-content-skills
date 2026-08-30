@@ -45,15 +45,15 @@ Mark a dimension **N/A** (excluded from averages) only when the format genuinely
 
 ### Step 5: Check for fatal flaws
 
-Independent of scores, flag any of these — each one caps the verdict at "Revise" no matter how good the rest is:
+Each of these caps the verdict at "Revise" no matter how good the rest is. Because a fatal flaw overrides the arithmetic, it needs a firing condition precise enough that two evaluators reading the same text reach the same answer — so each one below states when it fires. If a weakness doesn't meet the stated bar, it belongs in Priority fixes, not here.
 
-- **Buried lede** — the most interesting thing appears after the audience has already scrolled away.
-- **Curse of Knowledge** — jargon, abstractions, or insider assumptions the audience can't decode.
-- **No single core** — two or more competing messages; the reader can't say what the point was.
-- **Gimmick surprise** — a hook disconnected from the core idea (clickbait that the body doesn't cash).
-- **Low-arousal emotional register** — contentment, mild pride, corporate satisfaction ("we're pleased to announce").
-- **Semantic stretch** — unverifiable superlatives ("revolutionary", "world-class", "unique") doing the work evidence should do.
-- **Factual or credibility risk** — claims that are wrong, unsourced, or invite ridicule.
+- **Buried lede** — the single most interesting fact sits past the opening (below the fold, after the first ~20% of the piece), where the audience has already scrolled away.
+- **Curse of Knowledge** — jargon, abstractions, or insider assumptions the target audience can't decode without explanation.
+- **No single core** — fires when Simple scores ≤ 2: two or more messages compete and the reader can't say what the point was.
+- **Gimmick surprise** — the hook's promise is never cashed by the body, or the surprise is unrelated to the core idea.
+- **Low-arousal emotional register** — fires when Emotion (arousal) scores ≤ 2 **and the goal is awareness/shares**, because low arousal is what suppresses sharing. For a conversion or recall goal, weak arousal is a scored weakness, not a fatal flaw — a calm, credible ad can convert.
+- **Semantic stretch** — unverifiable superlatives ("revolutionary", "world-class", "unique") carrying a claim that no evidence in the piece supports. One stray adjective isn't enough; this fires when the superlatives *are* the argument.
+- **Factual or credibility risk** — claims that are wrong, unsourced in a load-bearing position, or phrased to dodge a number the reader would want ("5 stars from everyone who reviewed it" hiding n=4).
 
 ### Step 6: Compute the verdict
 
