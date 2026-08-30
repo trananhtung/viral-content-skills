@@ -39,9 +39,11 @@ Before analyzing, read the content once as the target audience member, scrolling
 
 ### Step 4: Score the twelve dimensions
 
-Score each dimension 0–5 using the rubric anchors. For every score, cite evidence — quote the exact phrase that earns or loses points. No score without a quote or a "nothing in the text does X" note.
+**Before scoring anything, decide which dimensions this format can carry.** Consult the applicability table in the rubric and name the N/A set for this piece up front: a single Instagram caption cannot design public observability, a 40-character headline cannot carry a story. Deciding this from the format first — rather than reaching for N/A halfway down the scorecard — is what stops you quietly assigning 2s to dimensions the brief never had room for, which silently drags strong work below the Publish line.
 
-Mark a dimension **N/A** (excluded from averages) only when the format genuinely can't express it — e.g. Public observability for a private sales email — and say why. Never use N/A to excuse a weakness the format could have addressed.
+Then score every remaining dimension 0–5 using the rubric anchors. For every score, cite evidence — quote the exact phrase that earns or loses points. No score without a quote or a "nothing in the text does X" note.
+
+N/A means "this format has no room for it" — never "this piece did it badly". The test: could a better version of this same brief have scored here? If yes, it is a low score. If no, it is N/A. Say which you concluded, in a clause, in the evidence cell.
 
 ### Step 5: Check for fatal flaws
 
