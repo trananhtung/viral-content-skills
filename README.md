@@ -5,7 +5,7 @@ Hai skill AI viết và chấm nội dung, dựng trên hai cuốn sách nghiên
 - **[Contagious: Why Things Catch On](https://jonahberger.com/books/contagious/)** của Jonah Berger, khung **STEPPS**: Social Currency, Triggers, Emotion, Public, Practical Value, Stories.
 - **[Made to Stick](https://heathbrothers.com/books/made-to-stick/)** của Chip Heath và Dan Heath, khung **SUCCESs**: Simple, Unexpected, Concrete, Credible, Emotional, Stories.
 
-Chạy được trên **Claude** (Claude Code, Claude.ai, Claude API) và **ChatGPT** (Custom GPT, Projects, hoặc chat thường).
+Chạy được trên **Claude** (Claude Code, Claude.ai, Claude API) và **ChatGPT** (plugin của workspace, skill tải lên, Projects, hoặc chat thường). Repo có sẵn manifest `.claude-plugin/plugin.json` nên cả hai nền tảng đều cài thẳng từ GitHub được.
 
 *[English version](README.en.md)*
 
@@ -17,6 +17,9 @@ Chạy được trên **Claude** (Claude Code, Claude.ai, Claude API) và **Chat
 | [`viral-content-evaluator`](skills/viral-content-evaluator/SKILL.md) | Chấm nội dung 0–5 trên 12 tiêu chí, mỗi điểm phải kèm câu trích dẫn làm bằng chứng. Kiểm tra 8 lỗi chí mạng, rồi kết luận Đăng được, Sửa lại, hoặc Làm lại, kèm danh sách sửa ưu tiên. |
 
 ```
+.claude-plugin/
+├── marketplace.json                      # manifest: cài plugin cho Claude Code và import vào ChatGPT
+└── plugin.json                           # siêu dữ liệu của plugin
 skills/
 ├── viral-content-creator/
 │   ├── SKILL.md                          # quy trình: brief → khung → cốt lõi → dựng → tự kiểm
@@ -70,6 +73,15 @@ Vòng lặp có giới hạn: viết, chấm, sửa một lần, chấm lại t�
 
 ### Claude Code
 
+Repo này là một plugin, nên cách ngắn nhất là cài qua marketplace:
+
+```bash
+claude plugin marketplace add trananhtung/viral-content-skills
+claude plugin install viral-content-skills@viral-content-skills
+```
+
+Hoặc chép tay hai thư mục skill:
+
 ```bash
 git clone https://github.com/trananhtung/viral-content-skills.git
 mkdir -p ~/.claude/skills
@@ -89,11 +101,68 @@ Truyền thư mục skill qua tính năng skills của Agent SDK, hoặc dán th
 
 ## Cài đặt cho ChatGPT
 
-Thư mục `chatgpt/` chứa bản độc lập, đã nhúng sẵn nội dung khung nên không cần file đính kèm:
+ChatGPT dùng **đúng định dạng skill giống Claude**: mỗi skill là một thư mục chứa `SKILL.md` với
+frontmatter `name` và `description`, kèm thư mục `references/` tùy chọn. Hai skill trong repo này đã
+đúng chuẩn đó sẵn, nên không cần chuyển đổi gì.
 
-- **Dùng nhanh:** dán cả file làm tin nhắn đầu tiên của cuộc trò chuyện, rồi đưa yêu cầu nội dung.
-- **ChatGPT Projects:** dán vào phần custom instructions của project.
-- **Custom GPT:** tải file lên làm Knowledge file, đặt Instructions là "Follow the workflow in content-creator-prompt.md for every content request." Làm tương tự với bản evaluator.
+Đọc trước một điều đã thay đổi: OpenAI **đang khai tử Custom GPTs**. Tài khoản cá nhân (Free, Go, Plus,
+Pro) không tạo hay đăng GPT mới được nữa. Với workspace Enterprise, ngày ngừng dự kiến là 11/12/2026.
+OpenAI khuyến nghị chuyển sang Plugins và Skills, nên ba cách dưới đây đi theo đường mới. Nếu bạn đọc
+hướng dẫn cũ nào bảo tạo Custom GPT rồi tải Knowledge file, hướng dẫn đó đã lỗi thời.
+
+### Cách 1: Import cả repo làm plugin
+
+Dành cho workspace **Business, Enterprise, Healthcare, Edu**, và cần quyền admin. Đây là cách gọn nhất,
+vì ChatGPT đọc được manifest `.claude-plugin/marketplace.json` có sẵn trong repo.
+
+1. Vào **Workspace settings → Plugins → Add → Import marketplace**
+2. **Source**: `https://github.com/trananhtung/viral-content-skills`
+3. **Path**: để trống, vì manifest nằm ở gốc repo
+4. **Branch, tag, hoặc commit**: để trống để bám nhánh mặc định và nhận cập nhật về sau
+5. Bấm **Import marketplace** rồi cấp quyền GitHub
+6. Mở plugin vừa import, đặt **Installation policy** cho từng nhóm người dùng
+
+Xong bước này, ChatGPT tự chọn skill khi yêu cầu khớp mục đích, hoặc bạn gọi thẳng bằng
+`@viral-content-creator` và `@viral-content-evaluator`. Trong Codex thì gọi bằng dấu `$`.
+
+Marketplace tự đồng bộ mỗi ngày. Muốn cập nhật ngay sau khi bạn sửa repo thì vào
+**Plugins → Marketplaces → Sync now**.
+
+### Cách 2: Upload từng skill
+
+Cũng cần workspace Business, Enterprise, Healthcare hoặc Edu, nhưng không cần quyền admin nếu workspace
+đã bật quyền upload.
+
+```bash
+cd skills
+zip -r viral-content-creator.zip viral-content-creator
+zip -r viral-content-evaluator.zip viral-content-evaluator
+```
+
+Trong ChatGPT: **sidebar → Plugins → tab Skills → Create → Upload from your computer**.
+
+ChatGPT quét file trước khi cho dùng. Phần lớn skill dùng được ngay sau khi quét xong, một số bị đánh
+dấu *Needs Review*. Tài liệu của OpenAI mô tả bước upload nhưng không nói rõ nhận định dạng nén nào, nên
+nếu file zip bị từ chối thì quay lại Cách 1.
+
+### Cách 3: Dán prompt vào chat hoặc Project
+
+Cách duy nhất chạy được trên gói cá nhân, vì Plugins và Skills chưa mở cho Free, Go, Plus, Pro. Dùng hai
+file trong thư mục `chatgpt/`, đã nhúng sẵn toàn bộ nội dung khung nên không cần file đính kèm:
+
+- **Chat thường**: dán cả file làm tin nhắn đầu tiên, rồi đưa yêu cầu nội dung ở tin nhắn sau.
+- **ChatGPT Projects**: dán vào phần custom instructions của project, rồi mọi cuộc trò chuyện trong
+  project đó đều chạy theo quy trình.
+
+Cách này không có tự động gọi skill. Bạn phải mở đúng project hoặc dán lại prompt mỗi lần.
+
+### Chọn cách nào
+
+| Gói tài khoản | Cách dùng được | Có tự động gọi skill |
+|---|---|---|
+| Business, Enterprise, Healthcare, Edu, có quyền admin | Cách 1 | Có |
+| Business, Enterprise, Healthcare, Edu, không phải admin | Cách 2 | Có |
+| Free, Go, Plus, Pro | Cách 3 | Không |
 
 ## Ví dụ câu lệnh
 

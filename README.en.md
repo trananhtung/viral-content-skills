@@ -5,7 +5,7 @@ AI skills that create and evaluate content engineered to **spread** and **stick*
 - **[Contagious: Why Things Catch On](https://jonahberger.com/books/contagious/)** by Jonah Berger — the **STEPPS** framework: Social Currency, Triggers, Emotion, Public, Practical Value, Stories.
 - **[Made to Stick: Why Some Ideas Survive and Others Die](https://heathbrothers.com/books/made-to-stick/)** by Chip Heath & Dan Heath — the **SUCCESs** framework: Simple, Unexpected, Concrete, Credible, Emotional, Stories.
 
-Works with **Claude** (Claude Code, Claude.ai, Claude API) and **ChatGPT** (Custom GPTs, Projects, or plain chat).
+Works with **Claude** (Claude Code, Claude.ai, Claude API) and **ChatGPT** (workspace plugins, uploaded skills, Projects, or plain chat). The repo ships a `.claude-plugin/plugin.json` manifest, so both platforms can install it straight from GitHub.
 
 ## What's inside
 
@@ -15,6 +15,9 @@ Works with **Claude** (Claude Code, Claude.ai, Claude API) and **ChatGPT** (Cust
 | [`viral-content-evaluator`](skills/viral-content-evaluator/SKILL.md) | Scores any content 0–5 across all 12 dimensions with quoted evidence, checks 8 fatal flaws (buried lede, curse of knowledge, valueless virality, social proof that normalizes the behavior you're fighting…), and returns a verdict — ✅ Publish / 🟡 Revise / 🔴 Rework — with concrete, prioritized fixes. |
 
 ```
+.claude-plugin/
+├── marketplace.json                      # manifest: Claude Code + ChatGPT plugin import
+└── plugin.json                           # the plugin's own metadata
 skills/
 ├── viral-content-creator/
 │   ├── SKILL.md                          # workflow: brief → core → engineer → draft → self-check
@@ -36,6 +39,15 @@ The two skills are designed as a **bounded** loop: create → evaluate → revis
 
 ### Claude Code
 
+The repo is a plugin, so the shortest route is a marketplace install:
+
+```bash
+claude plugin marketplace add trananhtung/viral-content-skills
+claude plugin install viral-content-skills@viral-content-skills
+```
+
+Or copy the skill folders by hand:
+
 ```bash
 git clone https://github.com/trananhtung/viral-content-skills.git
 mkdir -p ~/.claude/skills
@@ -55,11 +67,67 @@ Pass the skill folder via the skills feature of the Agent SDK, or inline `SKILL.
 
 ## Using with ChatGPT
 
-The `chatgpt/` folder contains self-contained versions (frameworks inlined, no file references needed):
+ChatGPT uses **the same skill format as Claude**: a directory per skill containing `SKILL.md` with
+`name` and `description` frontmatter, plus an optional `references/` folder. Both skills here already
+match that layout, so nothing needs converting.
 
-- **Quick use:** paste the whole file as the first message of a chat, then give your content brief.
-- **ChatGPT Projects:** paste it into the project's custom instructions.
-- **Custom GPT:** upload the file as a Knowledge file and set the Instructions to: *"Follow the workflow in content-creator-prompt.md for every content request."* (Same pattern for the evaluator.)
+One thing that changed: OpenAI is **retiring Custom GPTs**. Personal accounts (Free, Go, Plus, Pro) can
+no longer create or publish new GPTs, and Enterprise retirement is planned for Dec 11, 2026. Plugins and
+Skills are the recommended replacement, so the routes below use those. Any older guide telling you to
+build a Custom GPT and attach a Knowledge file is out of date.
+
+### Option 1: Import the whole repo as a plugin
+
+For **Business, Enterprise, Healthcare, and Edu** workspaces, admin access required. ChatGPT reads the
+`.claude-plugin/marketplace.json` manifest already in this repo, so it imports as-is.
+
+1. Go to **Workspace settings → Plugins → Add → Import marketplace**
+2. **Source**: `https://github.com/trananhtung/viral-content-skills`
+3. **Path**: leave empty, the manifest is at the repo root
+4. **Branch, tag, or commit**: leave empty to track the default branch and receive updates
+5. Select **Import marketplace** and authorize GitHub access
+6. Open the imported plugin and set its **Installation policy** per role
+
+ChatGPT then picks a skill when a request matches its purpose, or you invoke one explicitly with
+`@viral-content-creator` and `@viral-content-evaluator`. Codex uses `$` for the same thing.
+
+Marketplaces sync daily. To pull changes immediately, use **Plugins → Marketplaces → Sync now**.
+
+### Option 2: Upload each skill
+
+Also Business, Enterprise, Healthcare, or Edu, but no admin rights needed where the workspace permits
+member uploads.
+
+```bash
+cd skills
+zip -r viral-content-creator.zip viral-content-creator
+zip -r viral-content-evaluator.zip viral-content-evaluator
+```
+
+In ChatGPT: **sidebar → Plugins → Skills tab → Create → Upload from your computer**.
+
+ChatGPT scans uploads before they become available. Most are usable straight after the scan; some get
+flagged *Needs Review*. OpenAI's docs describe the upload step without naming an accepted archive
+format, so if the zip is rejected, fall back to Option 1.
+
+### Option 3: Paste the prompt into a chat or Project
+
+The only route that works on personal plans, since Plugins and Skills are not open to Free, Go, Plus, or
+Pro. Use the two files in `chatgpt/`, which inline the full framework content and need no attachments:
+
+- **Plain chat:** paste the whole file as the first message, then give your brief in the next one.
+- **ChatGPT Projects:** paste it into the project's custom instructions, and every conversation in that
+  project follows the workflow.
+
+This route has no automatic invocation. You open the right project, or paste the prompt again.
+
+### Which route applies
+
+| Plan | Route | Automatic invocation |
+|---|---|---|
+| Business, Enterprise, Healthcare, Edu with admin access | Option 1 | Yes |
+| Business, Enterprise, Healthcare, Edu without admin access | Option 2 | Yes |
+| Free, Go, Plus, Pro | Option 3 | No |
 
 ## Example prompts
 

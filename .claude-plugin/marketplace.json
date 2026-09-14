@@ -1,0 +1,16 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "viral-content-skills",
+  "description": "Skills that create and evaluate content engineered to spread and stick, built on Contagious (STEPPS) and Made to Stick (SUCCESs).",
+  "owner": {
+    "name": "trananhtung",
+    "url": "https://github.com/trananhtung"
+  },
+  "plugins": [
+    {
+      "name": "viral-content-skills",
+      "source": "./",
+      "description": "Create and evaluate content engineered to spread and stick, using the STEPPS framework from Contagious and the SUCCESs framework from Made to Stick."
+    }
+  ]
+}
