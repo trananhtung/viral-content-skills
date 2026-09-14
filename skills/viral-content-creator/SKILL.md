@@ -36,7 +36,17 @@ or bracketed placeholders (`[named customer]`) and flag the draft as needing ver
 
 For other missing details, make sensible assumptions, record them in the assumptions line of the output, and proceed. Only ask questions when the answer would genuinely change the content's direction.
 
-### Step 2: Find the core (before writing anything)
+### Step 2: Load the frameworks
+
+Read both reference files now, before you settle the core — they contain the detailed tactics, psychology, and examples you will draw from:
+
+- `references/made-to-stick-success.md` — how to make the core idea stick (SUCCESs)
+- `references/contagious-stepps.md` — how to make it spread (STEPPS)
+
+Short on time, read your goal's sections first: awareness → Unexpected, Social Currency, Emotion;
+recall → Simple, Concrete, Triggers, Stories; action → Concrete, Credible, Emotional, Practical Value.
+
+### Step 3: Find the core, then choose a structure
 
 The number one failure mode is the **Curse of Knowledge**: you know the topic so well that you communicate in abstractions the audience can't feel. Fight it with forced prioritization:
 
@@ -55,16 +65,6 @@ the core resolves — the question may be implied rather than asked. Three legit
 Supply only the context needed to understand the core or feel its gap. An audience that knows too
 little to sense a gap needs orientation first; that is not throat-clearing. A complete piece must
 deliver the answer it promised; a fragment may bridge toward it.
-
-### Step 3: Load the frameworks
-
-Read both reference files before you settle the core — they contain the detailed tactics, psychology, and examples you will draw from:
-
-- `references/made-to-stick-success.md` — how to make the core idea stick (SUCCESs)
-- `references/contagious-stepps.md` — how to make it spread (STEPPS)
-
-Short on time, read your goal's sections first: awareness → Unexpected, Social Currency, Emotion;
-recall → Simple, Concrete, Triggers, Stories; action → Concrete, Credible, Emotional, Practical Value.
 
 ### Step 4: Engineer the content
 
