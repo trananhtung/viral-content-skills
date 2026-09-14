@@ -145,16 +145,46 @@ Một thang điểm mà kết luận thay đổi tùy người chấm thì chưa
 
 Năm brief tiếng Anh (bài LinkedIn B2B, kịch bản TikTok, email gây quỹ, mở đầu blog, chiến dịch an toàn giao thông) được creator viết rồi chấm mù bởi các agent đánh giá riêng, không nhìn thấy phần lập luận của creator. Sau đó hai bài đối kháng được dựng riêng để thử hai lỗi chí mạng mới, và hai bài hiệu chuẩn kiểm tra xem khả năng phân biệt có sống sót qua thay đổi thang điểm không.
 
+| Brief | Định dạng, mục tiêu | Thang v1 | Thang hiện tại |
+|---|---|---|---|
+| A | LinkedIn B2B, nhận biết | 3,9 Sửa lại | 3,8 Sửa lại |
+| B | Kịch bản TikTok, chia sẻ | 4,0 Đăng được | **4,18 Đăng được** |
+| C | Email gây quỹ, chuyển đổi | 4,2 Đăng được | **4,38 Đăng được** |
+| D | Mở đầu blog, ghi nhớ | 4,0 Đăng được | 4,0 **Sửa lại** |
+| E | Chiến dịch giao thông, đổi hành vi | 3,93 Sửa lại | **4,3 Đăng được** |
+| **Trung bình** | | **4,01** | **4,13** |
+
+Bốn phép thử riêng cho khả năng phân biệt và hai lỗi chí mạng mới:
+
 | Phép thử | Thang v1 | Thang hiện tại |
 |---|---|---|
 | Bài doanh nghiệp rỗng (đối chứng) | 0,3 Làm lại | 0,24 Làm lại |
 | Bài LinkedIn người viết tay, chất lượng tốt | 4,1 Đăng được | 4,1 Đăng được |
-| Bài LinkedIn B2B, mục tiêu nhận biết | 3,9 Sửa lại | 3,8 Sửa lại |
-| Chiến dịch an toàn giao thông, đổi hành vi | 3,93 Sửa lại | **4,3 Đăng được** |
-| Quảng cáo Reels có thương hiệu tách rời được | — | 2,6 Sửa lại, **lỗi lan truyền vô giá trị nổ** |
-| Chiến dịch mở đầu bằng "84% người trẻ nhắn tin khi lái" | — | 2,9 Sửa lại, **lỗi bằng chứng xã hội phản tác dụng nổ** |
+| Quảng cáo Reels có thương hiệu tách rời được | chưa thử | 2,6 Sửa lại, **lỗi lan truyền vô giá trị nổ** |
+| Chiến dịch mở đầu bằng "84% người trẻ nhắn tin khi lái" | chưa thử | 2,9 Sửa lại, **lỗi bằng chứng xã hội phản tác dụng nổ** |
 
-Bài an toàn giao thông tăng 0,37 vì creator giờ nhận được cơ chế tác nhân kích hoạt (tần suất, độ mạnh liên kết, và kích hoạt ở nơi hành động khả thi) cùng cảnh báo bằng chứng xã hội ngay trong quy trình, thay vì chôn trong file reference. Nó tự bỏ con số 84% và nói rõ lý do. Bài LinkedIn giảm 0,1 vì phép thử N/A chặt hơn: một cơ chế khả thi mà không dùng thì bị chấm điểm thấp chứ không được miễn. Hai lỗi mới chỉ nổ đúng trên hai bài dựng ra để thử chúng, và được xem xét rồi bác bỏ chính xác trên bốn bài hợp lệ.
+Đọc bảng theo từng dòng thì thấy rõ thay đổi nào gây ra kết quả nào.
+
+Bài E tăng 0,37 vì creator giờ nhận cơ chế tác nhân kích hoạt (tần suất, độ mạnh liên kết, và kích hoạt ở nơi hành động khả thi) cùng cảnh báo bằng chứng xã hội ngay trong quy trình, thay vì chôn trong file reference. Nó tự bỏ con số 84% và giải thích lý do trong phần giả định.
+
+Bài C tăng 0,18 và đạt mức đó mà không bịa một cái tên nào. Bản cũ tự nghĩ ra tên nhân viên, tên thợ sửa ống nước, nhiệt độ ngoài trời và ngày hỏng nồi hơi. Bản mới dùng ô trống có dấu ngoặc để người gửi điền, và evaluator được hướng dẫn coi ô trống là chỗ chờ điền chứ không phải dữ kiện thiếu.
+
+Bài D giữ nguyên 4,0 nhưng chuyển từ Đăng được sang Sửa lại, vì quy tắc credibility siết lại đã nổ đúng chỗ: hai con số gánh toàn bộ lập luận đều không có nguồn. Vòng trước evaluator đã bỏ qua chính hai con số đó với lý do người đọc tự kiểm chứng được từ trí nhớ. Đây là mâu thuẫn mà vòng phản biện chỉ ra, và giờ nó không còn lọt.
+
+Bài A giảm 0,1 vì phép thử N/A chặt hơn: một cơ chế khả thi mà không dùng thì bị chấm thấp chứ không được miễn.
+
+Hai lỗi chí mạng mới chỉ nổ trên hai bài dựng ra để thử chúng. Trên năm brief hợp lệ, evaluator đều xem xét rồi bác bỏ chúng kèm lý do.
+
+### Hai bản Claude và ChatGPT có khớp nhau không
+
+Trước đây hai bản dùng ma trận trọng số khác nhau nên cho ra điểm khác nhau từ cùng một đầu vào. Sau khi đồng bộ, chấm lại hai bài giống hệt nhau:
+
+| Bài | Bản Claude | Bản ChatGPT |
+|---|---|---|
+| LinkedIn viết tay, chất lượng tốt | 4,1 Đăng được | 4,0 Đăng được |
+| Chiến dịch mở đầu bằng con số 84% | 2,9 Sửa lại, 2 lỗi chí mạng | 2,9 Sửa lại, đúng 2 lỗi đó |
+
+Chênh lệch 0,1 còn lại đến từ một tiêu chí được chấm khác nhau một điểm, không phải từ phép tính.
 
 ### Những con số này là gì và không là gì
 
