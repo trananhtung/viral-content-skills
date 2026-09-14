@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
   "name": "viral-content-skills",
-  "description": "Create and evaluate content engineered to spread and stick, using the STEPPS framework from Jonah Berger's \"Contagious\" and the SUCCESs framework from Chip & Dan Heath's \"Made to Stick\". Includes a creator skill that turns a brief into publish-ready copy and an evaluator skill that scores any draft 0-5 across 12 dimensions with quoted evidence.",
+  "description": "Create and evaluate content engineered to spread and stick, using the STEPPS framework from Contagious and the SUCCESs framework from Made to Stick. One skill writes, one scores with evidence.",
   "version": "1.1.0",
   "author": {
     "name": "trananhtung"
@@ -9,5 +9,11 @@
   "homepage": "https://github.com/trananhtung/viral-content-skills",
   "repository": "https://github.com/trananhtung/viral-content-skills",
   "license": "MIT",
-  "keywords": ["marketing", "copywriting", "content", "social-media", "advertising"]
+  "keywords": [
+    "marketing",
+    "copywriting",
+    "content",
+    "social-media",
+    "advertising"
+  ]
 }
