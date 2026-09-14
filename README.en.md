@@ -67,36 +67,42 @@ Pass the skill folder via the skills feature of the Agent SDK, or inline `SKILL.
 
 ## Using with ChatGPT
 
-ChatGPT uses **the same skill format as Claude**: a directory per skill containing `SKILL.md` with
-`name` and `description` frontmatter, plus an optional `references/` folder. Both skills here already
-match that layout, so nothing needs converting.
+These skills already use ChatGPT's own skill format, so nothing needs converting. Which route you take
+depends on your plan, and on a personal plan it takes about a minute.
 
-One thing that changed: OpenAI is **retiring Custom GPTs**. Personal accounts (Free, Go, Plus, Pro) can
-no longer create or publish new GPTs, and Enterprise retirement is planned for Dec 11, 2026. Plugins and
-Skills are the recommended replacement, so the routes below use those. Any older guide telling you to
-build a Custom GPT and attach a Knowledge file is out of date.
+### On a personal plan (Free, Go, Plus, Pro)
 
-### Option 1: Import the whole repo as a plugin
+This covers most people. Set up one Project, drop two files in, and you are done for good.
 
-For **Business, Enterprise, Healthcare, and Edu** workspaces, admin access required. ChatGPT reads the
-`.claude-plugin/marketplace.json` manifest already in this repo, so it imports as-is.
+**Step 1.** Save these two files to your computer (right-click, Save as):
 
-1. Go to **Workspace settings → Plugins → Add → Import marketplace**
-2. **Source**: `https://github.com/trananhtung/viral-content-skills`
-3. **Path**: leave empty, the manifest is at the repo root
-4. **Branch, tag, or commit**: leave empty to track the default branch and receive updates
-5. Select **Import marketplace** and authorize GitHub access
-6. Open the imported plugin and set its **Installation policy** per role
+- [content-creator-prompt.md](https://raw.githubusercontent.com/trananhtung/viral-content-skills/main/chatgpt/content-creator-prompt.md)
+- [content-evaluator-prompt.md](https://raw.githubusercontent.com/trananhtung/viral-content-skills/main/chatgpt/content-evaluator-prompt.md)
 
-ChatGPT then picks a skill when a request matches its purpose, or you invoke one explicitly with
-`@viral-content-creator` and `@viral-content-evaluator`. Codex uses `$` for the same thing.
+**Step 2.** In ChatGPT, create a new Project and drag both files into its files area.
 
-Marketplaces sync daily. To pull changes immediately, use **Plugins → Marketplaces → Sync now**.
+**Step 3.** Paste exactly this into the project's instructions:
 
-### Option 2: Upload each skill
+```
+When I ask you to write or improve content, follow the workflow in content-creator-prompt.md.
+When I ask you to score, review, or judge whether content is good, follow content-evaluator-prompt.md.
+```
 
-Also Business, Enterprise, Healthcare, or Edu, but no admin rights needed where the workspace permits
-member uploads.
+That's it. Open that project and ask normally from now on.
+
+For one-off use, skip the Project: start a new chat, attach one file, say "follow this file", then give
+your brief.
+
+### On a Business, Enterprise, Healthcare, or Edu workspace
+
+These plans have Plugins and Skills, so ChatGPT invokes a skill without you opening the right project.
+
+An admin goes to **Workspace settings → Plugins → Add → Import marketplace**, sets Source to
+`https://github.com/trananhtung/viral-content-skills`, leaves Path and Branch empty, and imports. Then
+open the imported plugin to set its Installation policy.
+
+Without admin rights, zip each skill folder and use **Plugins → Skills tab → Create → Upload from your
+computer**:
 
 ```bash
 cd skills
@@ -104,30 +110,14 @@ zip -r viral-content-creator.zip viral-content-creator
 zip -r viral-content-evaluator.zip viral-content-evaluator
 ```
 
-In ChatGPT: **sidebar → Plugins → Skills tab → Create → Upload from your computer**.
+Once installed, invoke with `@viral-content-creator` and `@viral-content-evaluator`, or let ChatGPT
+pick. The marketplace syncs with the repo daily.
 
-ChatGPT scans uploads before they become available. Most are usable straight after the scan; some get
-flagged *Needs Review*. OpenAI's docs describe the upload step without naming an accepted archive
-format, so if the zip is rejected, fall back to Option 1.
+### A note on Custom GPTs
 
-### Option 3: Paste the prompt into a chat or Project
-
-The only route that works on personal plans, since Plugins and Skills are not open to Free, Go, Plus, or
-Pro. Use the two files in `chatgpt/`, which inline the full framework content and need no attachments:
-
-- **Plain chat:** paste the whole file as the first message, then give your brief in the next one.
-- **ChatGPT Projects:** paste it into the project's custom instructions, and every conversation in that
-  project follows the workflow.
-
-This route has no automatic invocation. You open the right project, or paste the prompt again.
-
-### Which route applies
-
-| Plan | Route | Automatic invocation |
-|---|---|---|
-| Business, Enterprise, Healthcare, Edu with admin access | Option 1 | Yes |
-| Business, Enterprise, Healthcare, Edu without admin access | Option 2 | Yes |
-| Free, Go, Plus, Pro | Option 3 | No |
+If you find an older guide telling you to build a Custom GPT and attach a Knowledge file, it is out of
+date. OpenAI is retiring Custom GPTs: personal accounts can no longer create new ones, and Enterprise
+retirement is planned for Dec 11, 2026.
 
 ## Example prompts
 

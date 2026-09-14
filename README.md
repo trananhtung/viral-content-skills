@@ -101,37 +101,42 @@ Truyền thư mục skill qua tính năng skills của Agent SDK, hoặc dán th
 
 ## Cài đặt cho ChatGPT
 
-ChatGPT dùng **đúng định dạng skill giống Claude**: mỗi skill là một thư mục chứa `SKILL.md` với
-frontmatter `name` và `description`, kèm thư mục `references/` tùy chọn. Hai skill trong repo này đã
-đúng chuẩn đó sẵn, nên không cần chuyển đổi gì.
+Hai skill này dùng đúng định dạng skill của ChatGPT, nên không phải chuyển đổi gì. Cách cài phụ thuộc
+vào gói tài khoản, và với gói cá nhân thì chỉ mất khoảng một phút.
 
-Đọc trước một điều đã thay đổi: OpenAI **đang khai tử Custom GPTs**. Tài khoản cá nhân (Free, Go, Plus,
-Pro) không tạo hay đăng GPT mới được nữa. Với workspace Enterprise, ngày ngừng dự kiến là 11/12/2026.
-OpenAI khuyến nghị chuyển sang Plugins và Skills, nên ba cách dưới đây đi theo đường mới. Nếu bạn đọc
-hướng dẫn cũ nào bảo tạo Custom GPT rồi tải Knowledge file, hướng dẫn đó đã lỗi thời.
+### Nếu bạn dùng gói cá nhân (Free, Go, Plus, Pro)
 
-### Cách 1: Import cả repo làm plugin
+Đây là trường hợp của hầu hết mọi người. Tạo một Project rồi thả hai file vào, làm một lần dùng mãi.
 
-Dành cho workspace **Business, Enterprise, Healthcare, Edu**, và cần quyền admin. Đây là cách gọn nhất,
-vì ChatGPT đọc được manifest `.claude-plugin/marketplace.json` có sẵn trong repo.
+**Bước 1.** Tải hai file này về máy, bấm chuột phải rồi chọn lưu:
 
-1. Vào **Workspace settings → Plugins → Add → Import marketplace**
-2. **Source**: `https://github.com/trananhtung/viral-content-skills`
-3. **Path**: để trống, vì manifest nằm ở gốc repo
-4. **Branch, tag, hoặc commit**: để trống để bám nhánh mặc định và nhận cập nhật về sau
-5. Bấm **Import marketplace** rồi cấp quyền GitHub
-6. Mở plugin vừa import, đặt **Installation policy** cho từng nhóm người dùng
+- [content-creator-prompt.md](https://raw.githubusercontent.com/trananhtung/viral-content-skills/main/chatgpt/content-creator-prompt.md)
+- [content-evaluator-prompt.md](https://raw.githubusercontent.com/trananhtung/viral-content-skills/main/chatgpt/content-evaluator-prompt.md)
 
-Xong bước này, ChatGPT tự chọn skill khi yêu cầu khớp mục đích, hoặc bạn gọi thẳng bằng
-`@viral-content-creator` và `@viral-content-evaluator`. Trong Codex thì gọi bằng dấu `$`.
+**Bước 2.** Trong ChatGPT, tạo Project mới, kéo hai file vừa tải vào phần file của project.
 
-Marketplace tự đồng bộ mỗi ngày. Muốn cập nhật ngay sau khi bạn sửa repo thì vào
-**Plugins → Marketplaces → Sync now**.
+**Bước 3.** Dán đúng câu này vào ô instructions của project:
 
-### Cách 2: Upload từng skill
+```
+Khi tôi nhờ viết hoặc cải thiện nội dung, hãy làm theo quy trình trong content-creator-prompt.md.
+Khi tôi nhờ chấm, review hoặc hỏi nội dung có tốt không, hãy làm theo content-evaluator-prompt.md.
+```
 
-Cũng cần workspace Business, Enterprise, Healthcare hoặc Edu, nhưng không cần quyền admin nếu workspace
-đã bật quyền upload.
+Xong. Từ giờ mở project đó và yêu cầu bình thường.
+
+Nếu chỉ cần dùng một lần, bỏ qua Project: mở chat mới, đính kèm một file, rồi gõ "làm theo file này",
+sau đó đưa yêu cầu.
+
+### Nếu bạn dùng workspace Business, Enterprise, Healthcare hoặc Edu
+
+Các gói này có Plugins và Skills, nên ChatGPT tự gọi skill mà không cần mở đúng project.
+
+Admin vào **Workspace settings → Plugins → Add → Import marketplace**, điền Source là
+`https://github.com/trananhtung/viral-content-skills`, để trống Path và Branch, rồi Import. Sau đó mở
+plugin vừa import để đặt Installation policy.
+
+Không phải admin thì nén từng thư mục skill rồi vào **Plugins → tab Skills → Create → Upload from your
+computer**:
 
 ```bash
 cd skills
@@ -139,30 +144,14 @@ zip -r viral-content-creator.zip viral-content-creator
 zip -r viral-content-evaluator.zip viral-content-evaluator
 ```
 
-Trong ChatGPT: **sidebar → Plugins → tab Skills → Create → Upload from your computer**.
+Cài xong thì gọi bằng `@viral-content-creator` và `@viral-content-evaluator`, hoặc để ChatGPT tự chọn.
+Marketplace tự đồng bộ với repo mỗi ngày.
 
-ChatGPT quét file trước khi cho dùng. Phần lớn skill dùng được ngay sau khi quét xong, một số bị đánh
-dấu *Needs Review*. Tài liệu của OpenAI mô tả bước upload nhưng không nói rõ nhận định dạng nén nào, nên
-nếu file zip bị từ chối thì quay lại Cách 1.
+### Một lưu ý về Custom GPT
 
-### Cách 3: Dán prompt vào chat hoặc Project
-
-Cách duy nhất chạy được trên gói cá nhân, vì Plugins và Skills chưa mở cho Free, Go, Plus, Pro. Dùng hai
-file trong thư mục `chatgpt/`, đã nhúng sẵn toàn bộ nội dung khung nên không cần file đính kèm:
-
-- **Chat thường**: dán cả file làm tin nhắn đầu tiên, rồi đưa yêu cầu nội dung ở tin nhắn sau.
-- **ChatGPT Projects**: dán vào phần custom instructions của project, rồi mọi cuộc trò chuyện trong
-  project đó đều chạy theo quy trình.
-
-Cách này không có tự động gọi skill. Bạn phải mở đúng project hoặc dán lại prompt mỗi lần.
-
-### Chọn cách nào
-
-| Gói tài khoản | Cách dùng được | Có tự động gọi skill |
-|---|---|---|
-| Business, Enterprise, Healthcare, Edu, có quyền admin | Cách 1 | Có |
-| Business, Enterprise, Healthcare, Edu, không phải admin | Cách 2 | Có |
-| Free, Go, Plus, Pro | Cách 3 | Không |
+Nếu bạn tìm thấy hướng dẫn cũ nào bảo tạo Custom GPT rồi tải Knowledge file, hướng dẫn đó đã lỗi thời.
+OpenAI đang khai tử Custom GPTs: tài khoản cá nhân không tạo được GPT mới nữa, và workspace Enterprise
+dự kiến ngừng ngày 11/12/2026.
 
 ## Ví dụ câu lệnh
 
