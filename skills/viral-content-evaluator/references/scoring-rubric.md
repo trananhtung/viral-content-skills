@@ -14,7 +14,7 @@ Each dimension lists what 0, 3, and 5 look like. Interpolate for 1, 2, 4. When t
 
 - **0** — No identifiable main point, or three-plus competing messages.
 - **3** — A main point exists but shares space with secondary messages; a reader summarizing it would need two sentences.
-- **5** — One core idea a stranger can repeat in one sentence after one read. Everything in the text serves it. Lede is not buried.
+- **5** — One prioritized, compact core a stranger can repeat after one read, and it carries enough to guide the understanding, inference, or decision the goal needs — not just a memorable phrase. Everything in the text serves it; the lede is not buried.
 
 ### Unexpected — breaks a pattern, opens a curiosity gap
 
@@ -36,15 +36,26 @@ Each dimension lists what 0, 3, and 5 look like. Interpolate for 1, 2, 4. When t
 
 ### Emotional — makes the audience feel, targets identity
 
+Quote the situation, the consequence, and what connects it to the audience's concerns. A named person
+earns no credit by itself, and a concrete self-interest appeal is not capped below a story: Heaths'
+Tempe study had people who *pictured themselves* using cable TV subscribe at 47% versus 20% for those
+merely told the benefits.
+
 - **0** — Purely informational; no emotional register at all, or corporate self-congratulation.
-- **3** — Names an emotion or pain point but doesn't make the reader feel it; appeals only to rational self-interest.
-- **5** — Evokes a specific feeling through a specific person or moment (Mother Teresa principle: one individual beats a statistic). Appeals to identity — "people like you do things like this" — not just benefit.
+- **3** — Names an emotion, benefit, or pain point without making it imaginable.
+- **4** — A concrete situation or consequence that makes an audience concern imaginable — including a vivid WIIFY appeal the reader can picture happening to them.
+- **5** — Those concrete stakes clearly connect the core to what this audience actually values: one individual beating a statistic (Mother Teresa principle), identity ("people like you do things like this"), or a motive above money and security.
 
-### Story — narrative that carries the idea
+### Story — narrative that teaches or moves
 
-- **0** — Pure exposition or feature list.
-- **3** — An anecdote appears but is decorative — the idea survives without it.
-- **5** — The idea is embedded in a narrative with a protagonist, tension, and resolution (challenge, connection, or creativity plot). Retelling the story retells the idea.
+Scores the story's *function*: does it let the audience mentally rehearse the behavior (simulation) or
+move them to act (inspiration)? Whether the brand survives retelling is scored under Story vehicle, not
+here. A hypothetical or second-person scene is judged on these mechanics like any other; whether it is
+honestly labelled is a Credible question.
+
+- **0** — No sequence of events: pure exposition or a feature list.
+- **3** — Events are present, but the useful lesson is weak or the motivational relevance is thin.
+- **5** — A coherent narrative supports real mental rehearsal ("I could do that, here's how it goes") or action-relevant inspiration. Where the intent is inspiration, the plot fits the action wanted (challenge, connection, or creativity). Neither a named protagonist nor both functions is required.
 
 ---
 
@@ -58,9 +69,12 @@ Each dimension lists what 0, 3, and 5 look like. Interpolate for 1, 2, 4. When t
 
 ### Triggers — linked to frequent environmental cues
 
+Three factors, not one: recurrence, strength of the association, and timing relative to the response
+you want. Name all three in the evidence cell.
+
 - **0** — Nothing ties the message to anything the audience regularly encounters.
-- **3** — Tied to a cue, but a rare one (once-a-year event), or the link is incidental.
-- **5** — Deliberately anchored to a frequent cue in the audience's daily life (morning coffee, Monday standup, checkout line) so the environment re-surfaces the message repeatedly.
+- **3** — Tied to a cue, but a rare one, an overloaded one that triggers everything, or an incidental link.
+- **5** — An explicit, strong association with a cue that recurs across the audience's real opportunities and fires when the goal is achievable — recall, conversation, or action. Daily recurrence is not required; a monthly payday cue for a payday decision can score 5.
 
 ### Emotion (arousal check) — the feeling is high-arousal
 
@@ -83,11 +97,14 @@ Each dimension lists what 0, 3, and 5 look like. Interpolate for 1, 2, 4. When t
 - **3** — Useful but generic advice available anywhere, or utility buried in promotion.
 - **5** — Specific, actionable, immediately usable value (numbers, steps, thresholds) packaged so forwarding it is an act of helping a friend. Narrow beats broad.
 
-### Story vehicle — the brand/idea is inseparable from the tale
+### Story vehicle — the retention target survives retelling
 
-- **0** — No narrative to retell.
-- **3** — A retellable story exists, but the idea/brand drops out when people retell it (Panda-cheese problem: great story, forgettable sponsor).
-- **5** — The story is a Trojan horse: it cannot be retold without transmitting the core idea/brand (valuable virality, like Blendtec's "Will It Blend?").
+Test it: write the piece's retellable content as one actor–action–outcome sentence, keeping what makes
+it worth repeating. Then check whether the retention target (brand, benefit, or core idea) is still in it.
+
+- **0** — No narrative or hook to retell.
+- **3** — A retellable story exists, but the target drops out of that sentence (the Evian "Roller Babies" problem: a viewing record, a forgettable sponsor, and falling sales).
+- **5** — The target explains the story's distinctive event or payoff, so it cannot be retold away — valuable virality, like Blendtec's "Will It Blend?" or Panda cheese, where the product *is* the plot.
 
 ---
 
@@ -110,39 +127,52 @@ Compute the weighted average with these multipliers (dimension score × weight, 
 | Practical Value | 2 | 1 | 1 |
 | Story vehicle | 1 | 1 | 0.5 |
 
-**Goal-critical dimensions** (used in verdict rules):
-
-- Awareness/shares: Social Currency, Emotion (arousal), Unexpected
-- Memory/recall: Simple, Concrete, Triggers
-- Action/conversion: Concrete, Credible, Emotional
+The double-weighted dimensions *are* the goal-critical ones; there is no separate gate on them.
 
 ## Verdict rules
 
-1. Any **fatal flaw** (see SKILL.md Step 5) → at best 🟡 Revise.
-2. Any goal-critical dimension ≤ 1 → 🔴 Rework.
-3. Weighted average ≥ 4.0 AND all goal-critical dimensions ≥ 3 AND no fatal flaws → ✅ Publish.
-4. Weighted average ≥ 2.5 → 🟡 Revise.
-5. Otherwise → 🔴 Rework.
+Compute the weighted average over non-N/A dimensions, unrounded, then apply in order:
+
+1. Weighted average < 2.5 → 🔴 **Rework**.
+2. Any **fatal flaw** (see SKILL.md Step 5) → 🟡 **Revise**.
+3. Weighted average < 4.0 → 🟡 **Revise**.
+4. Otherwise → ✅ **Publish**.
+
+These weights and thresholds are editorial heuristics that make judgement reproducible between
+evaluators. They are not measured probabilities that a piece will spread, and neither book supplies
+them.
 
 ## When a dimension is N/A
 
 Scoring a dimension the format structurally cannot carry punishes the writer for the brief, not the work — and it silently drags the weighted average below the Publish line no matter how good the copy is. Mark it N/A (excluded from the average) when the format has no room to express it, and say so in the evidence cell.
 
-Common, legitimate N/A calls:
+**The test is structural, not categorical.** Ask whether a better version of *this same brief* — same
+medium, length, audience, available assets and scope — could have expressed the dimension at all. If
+yes, score it low. If no, mark N/A. There are no automatic exemptions by word count, product category,
+or campaign type: a 40-word caption *can* plant a trigger, and an advocacy piece *can* carry practical
+value if it hands the reader something usable. You may not imagine extra campaign assets to make a
+dimension applicable, and a mechanism that was feasible but missing is a low score, not N/A.
 
-| Format | Usually N/A | Why |
+Frequently defensible N/A calls, each still subject to that test:
+
+| Format | Often N/A | Why |
 |---|---|---|
-| Single ad, IG caption, subject line | Public | One post can't design observability or behavioral residue; that's a campaign-level or product-level decision. |
-| Short-form commerce copy for a decorative/keepsake product | Practical Value | The product's value is emotional, not informational — there is no useful tip to forward. |
-| Any piece under ~60 words, headline, or hook alone | Story, Story vehicle, Triggers | Not enough room for narrative or a cue to be planted. |
+| Single ad, IG caption, subject line | Public | One post rarely has room to design observability or behavioral residue; that is usually a campaign- or product-level decision. |
 | 1:1 email, internal memo, transactional message | Public, Social Currency | Not shared onward by design. |
+| Headline or hook evaluated alone | Story, Story vehicle | No room for a narrative; say the evaluation is partial. |
 
-The discipline that keeps this honest: ask whether a *better version of this same brief* could have scored on the dimension. If yes, score it low. If no, mark N/A. "An Instagram caption can't build Public visibility" is a fair N/A; "this caption didn't bother being remarkable" is a 1, not an N/A.
+"An Instagram caption can't build Public visibility" is a fair N/A; "this caption didn't bother being remarkable" is a 1, not an N/A.
+
+**Practical Value is about what the receiver gets** — useful advice, information, *or* a genuine deal.
+Don't exempt commerce or advocacy copy by category: a donation ask that hands the reader nothing usable
+scores low, and one that does (a real deadline they can act on, a replacement behavior) scores for it.
+Reference-point framing of a price or ask earns credit under Concrete or Credible insofar as it supplies
+a comprehensible relationship or supported evidence — it is not automatically Practical Value.
 
 ## Calibration notes
 
 - A typical competent-but-forgettable corporate post scores 2.0–2.8 weighted. That is normal — say so plainly.
 - Short-form commerce copy that scores 3.5–3.9 is genuinely good work with one real gap left. Don't round it up to Publish to be nice, and don't describe it as weak — name the one gap and say the rest is strong.
 - Scores of 5 should be rare and quotable: if you give a 5, the evidence cell should contain a line worth stealing.
-- Long content (articles, scripts) is scored on its weakest load-bearing part: a great body with a dead headline fails at Unexpected, because nobody reaches the body.
+- Long content (articles, scripts) is scored on its weakest load-bearing part: a great body with a dead headline fails at Unexpected, because nobody reaches the body. For a complete long piece, also judge whether the central gap is sustained and resolved; judge a commissioned fragment only on its own scope.
 - When evaluating a headline/hook alone, score Triggers, Public, and Story vehicle as N/A unless present, and say the evaluation is partial.

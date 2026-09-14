@@ -40,9 +40,9 @@
 
 ## Fatal flaws
 
-**None detected** — but one watch-item that stops just short.
+**Credibility risk — fires.**
 
-- **Soft proof, near-miss on credibility risk:** "5.0 stars from every couple who's reviewed it" is hedged carefully enough to be true, so it isn't a false or ridicule-inviting claim. It is, however, unsourced social proof doing load-bearing work in a conversion email, and it reads as evasive precisely because it avoids the number. Fix it before send.
+- **"5.0 stars from every couple who's reviewed it"** is hedged carefully enough to be literally true, but it is unsourced social proof doing load-bearing work in a conversion email, and it is phrased precisely to avoid the count the reader would want. That is the firing condition, so the verdict is capped at Revise regardless of the arithmetic. Fix it before send: state the real number, even if it is small.
 - Checked and cleared: lede is not buried (deadline is in the subject, the preview, and the first three words of the body); no jargon or insider assumptions; one clear core; the subject line's promise is fully cashed by the body; register is warm rather than corporate-congratulatory, so it doesn't hit the "we're pleased to announce" failure state — though it drifts toward it in the final line.
 
 ## What works (keep these)
@@ -57,7 +57,7 @@
 
 2. **Fix the closing line — it currently kills the urgency the opener built.** *Principle: Emotion (arousal).* "The sooner your date is in, the more comfortably we stay ahead of it" is written from the fulfillment team's point of view and its key word is "comfortably." Replace with the reader's stake: **"Every day you wait is a day of production time we can't give back — and October only comes once."** Same information, opposite physiological effect, and it sits directly above the CTA where activation matters most.
 
-3. **Quantify the proof and cash the public angle in one move.** *Principle: Credible + Public.* Swap "5.0 stars from every couple who's reviewed it" for a countable, pictureable proof that also names the observability the product already has: **"142 couples have stood in front of one. All 142 rated it 5 stars — and it's in the background of every photo they took."** (Substitute the real count; if the real number is small, use it honestly — "all 19 couples" beats an unbacked 5.0.) This fixes the weakest credibility line, adds the guest-and-photograph visibility the copy never mentions, and gives the reader a concrete scene instead of a described feeling.
+3. **Quantify the proof and cash the public angle in one move.** *Principle: Credible + Public.* Swap "5.0 stars from every couple who's reviewed it" for a countable, pictureable proof that also names the observability the product already has: **"[N] couples have stood in front of one. All [N] rated it 5 stars — and it's in the background of every photo they took."** ([N] is the real review count, which the evaluator does not have and must not invent; if it is small, use it anyway — "all 19 couples" beats an unbacked 5.0.) This fixes the weakest credibility line, adds the guest-and-photograph visibility the copy never mentions, and gives the reader a concrete scene instead of a described feeling.
 
 ## Suggested hook rewrite
 

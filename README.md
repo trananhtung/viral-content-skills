@@ -12,7 +12,7 @@ Works with **Claude** (Claude Code, Claude.ai, Claude API) and **ChatGPT** (Cust
 | Skill | What it does |
 |-------|--------------|
 | [`viral-content-creator`](skills/viral-content-creator/SKILL.md) | Turns a raw idea into publish-ready content (posts, scripts, ads, emails, landing pages) by finding the core message, then deliberately applying STEPPS + SUCCESs levers. Outputs the content plus a "why this works" breakdown and alternative hooks. |
-| [`viral-content-evaluator`](skills/viral-content-evaluator/SKILL.md) | Scores any content 0–5 across all 12 dimensions with quoted evidence, checks 7 fatal flaws (buried lede, curse of knowledge, gimmick hooks…), and returns a verdict — ✅ Publish / 🟡 Revise / 🔴 Rework — with concrete, prioritized fixes. |
+| [`viral-content-evaluator`](skills/viral-content-evaluator/SKILL.md) | Scores any content 0–5 across all 12 dimensions with quoted evidence, checks 8 fatal flaws (buried lede, curse of knowledge, valueless virality, social proof that normalizes the behavior you're fighting…), and returns a verdict — ✅ Publish / 🟡 Revise / 🔴 Rework — with concrete, prioritized fixes. |
 
 ```
 skills/
@@ -30,7 +30,7 @@ chatgpt/
 └── content-evaluator-prompt.md           # self-contained prompt version for ChatGPT
 ```
 
-The two skills are designed as a loop: **create → evaluate → revise**. The evaluator's verdict thresholds are the creator's self-check standards.
+The two skills are designed as a **bounded** loop: create → evaluate → revise once → optionally re-evaluate once → stop. The evaluator receives the brief, the evidence inventory and the draft — never the creator's "why this works" rationale, which argues the case the evaluator is supposed to test independently. Only fixes that stay inside the brief and the available evidence get applied; a score never authorizes inventing evidence.
 
 ## Using with Claude
 
@@ -104,6 +104,42 @@ Largest per-dimension gains: Simple, Unexpected, Emotion (arousal), and Story ve
 The identical seven texts were then re-scored by a second, independent set of judges after the rubric fixes. Scores barely moved — mean absolute shift 0.10 points, maximum 0.2 — and the skill-versus-baseline gap held at +0.60. Per-dimension, the two judge sets agreed exactly 79% of the time and landed within one point 100% of the time. The control scored 0.9, 0.9, and 0.8 across three independent runs.
 
 That stability is the point: a rubric whose verdict depends on which judge happens to read the piece is not a standard. These numbers say the scorecard is reproducible.
+
+> **Note:** the benchmark and reliability numbers above were produced under the v1 rubric. The verdict
+> algorithm changed in the book-fidelity revision (goal-critical minimum-score gates removed, low
+> arousal demoted from fatal flaw to scored weakness, two fatal flaws added), so those scores are not
+> directly comparable to scores produced today. The discrimination check was re-run under the current
+> rubric and held: see below.
+
+### Validation of the revised rubric
+
+Five English briefs (B2B LinkedIn post, TikTok script, fundraising email, blog opening, road-safety
+PSA) were written by the creator and scored blind by separate evaluator agents that never saw the
+creator's rationale. Two adversarial pieces were then written specifically to trip the new fatal-flaw
+gates, and two calibration pieces checked that discrimination survived the rubric change.
+
+| Check | Under v1 rubric | Under current rubric |
+|---|---|---|
+| Generic corporate launch post (control) | 0.3 🔴 Rework | 0.24 🔴 Rework |
+| Strong hand-written LinkedIn post | 4.1 ✅ Publish | 4.1 ✅ Publish |
+| B2B LinkedIn post, awareness goal | 3.9 🟡 Revise | 3.8 🟡 Revise |
+| Road-safety PSA, behavior-change goal | 3.93 🟡 Revise | **4.3 ✅ Publish** |
+| Reels ad whose brand is detachable | — | 2.6 🟡 Revise, **valueless virality fires** |
+| PSA leading with "84% of drivers your age text" | — | 2.9 🟡 Revise, **counterproductive social proof fires** |
+
+The PSA gained 0.37 because the creator now gets the trigger mechanics (recurrence, association
+strength, and firing where the action is possible) and the social-proof warning in the workflow itself,
+rather than buried in a reference file — it dropped the 84% statistic on its own and said why. The
+LinkedIn post lost 0.1 because the stricter N/A test scores a feasible-but-missing mechanism instead of
+excusing it. Both new gates fired only on the pieces built to trip them, and were explicitly considered
+and correctly declined on the four legitimate pieces.
+
+### What the numbers are and aren't
+
+The 0–5 anchors, the goal weights, and the 4.0 / 2.5 thresholds are **editorial heuristics** that make
+judgement reproducible between evaluators. Neither book supplies them. They are not measured
+probabilities that a piece will spread, and no result here is validated against real audience
+outcomes — every score in this repository is one model judging another model's writing.
 
 ## Attribution & license
 
